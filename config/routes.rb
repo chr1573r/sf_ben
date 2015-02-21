@@ -1,4 +1,15 @@
 Rails.application.routes.draw do
+  # action 'route' => 'controller#function'
+  post 'user/register' => 'users#create'
+  get 'user/:id' => 'users#show'
+
+
+
+
+
+
+
+
   # The priority is based upon order of creation: first created -> highest priority.
   # See how all your routes lay out with "rake routes".
 
