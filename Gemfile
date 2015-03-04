@@ -7,11 +7,13 @@ gem 'rails-api'
 
 gem 'spring', :group => :development
 
-# Debugging
-gem 'pry-rails'
-gem 'pry-byebug'
+group :development do
+  # Debugging
+  gem 'pry-rails'
+  gem 'pry-byebug'
 
-gem 'sqlite3'
+  gem 'sqlite3'
+end
 
 gem 'active_model_serializers', '~> 0.9.2'
 
