@@ -1,8 +1,8 @@
 class UsersController < ApplicationController
 
-	before_action :check_session, except: :create
+  before_action :check_session, except: :create
 
-	 def show
+  def show
     user = User.find(params[:id])
     
     render json: user
@@ -12,11 +12,7 @@ class UsersController < ApplicationController
     user = User.new(register_params)
 
     if user.save
-      if status.create(user.id)
         render json: {success: "Resource created", user: remove_unsafe_keys(user) }.to_json, status: 201
-      else
-        resource_could_not_be_created 
-      end
     else
       check_errors_or_500(user)
     end
@@ -35,7 +31,7 @@ class UsersController < ApplicationController
 
   end
 
-	def destroy
+  def destroy
     user = User.find_by_id(params[:id])
 
     return not_authorized unless current_user == user
@@ -51,17 +47,19 @@ class UsersController < ApplicationController
   # Used in SessionsController#create
   def self.authenticate(email, password)
    
-    user = User.find_by_email_and_password(email, password)
+    user = User.where(:email => email, :password => password).take!
 
-    return not_authorized if user.empty?
-    
-    user
+    unless user.nil?
+      user
+    else
+      nil
+    end 
 
   end
 
-	private
+  private
 
-	def remove_unsafe_keys(user)
+  def remove_unsafe_keys(user)
     user.slice('id', 'name', 'email')
   end
 

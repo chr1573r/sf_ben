@@ -3,7 +3,7 @@ class SessionsController < ApplicationController
   # Create new auth token for user
   def create
     # Match user / pass against db
-    user = UsersController.authenticate(params[:username], params[:password])
+    user = UsersController.authenticate(params[:email], params[:password])
 
     if user
       session = Session.new

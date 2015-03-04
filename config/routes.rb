@@ -1,8 +1,18 @@
 Rails.application.routes.draw do
-  # action 'route' => 'controller#function'
-  post 'user/register' => 'users#create'
+
+
+  post 'login' => 'sessions#create'
+  delete 'login' => 'sessions#destroy'
+
+  # User + Following routes
+
   get 'user/:id' => 'users#show'
 
+  post 'register' => 'users#create'
+
+  put 'user/:id' => 'users#update'
+
+  delete 'user/:id' => 'users#destroy' 
 
 
 

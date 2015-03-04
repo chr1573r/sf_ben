@@ -7,6 +7,9 @@ gem 'rails-api'
 
 gem 'spring', :group => :development
 
+# Debugging
+gem 'pry-rails'
+gem 'pry-byebug'
 
 gem 'sqlite3'
 
