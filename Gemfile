@@ -7,6 +7,8 @@ gem 'rails-api'
 
 gem 'pg'
 
+gem 'rails_stdout_logging'
+
 gem 'spring', :group => :development
 
 group :development do
